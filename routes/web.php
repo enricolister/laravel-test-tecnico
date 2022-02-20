@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\API\BeerController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [HomeController::class, 'home'])
+    ->middleware('token.auth')
+;
+
+Route::post('/', [HomeController::class, 'home'])
+    ->middleware('token.auth')
+;
+
+Route::get('/callInternalBeers', [HomeController::class, 'callInternalBeers'])
+    ->name('callInternalBeers')
+    ->middleware('token.auth')
+;
+
+Route::get('/login', [HomeController::class, 'login'])
+    ->name('login')
+;
+
+Route::get('/logout', [HomeController::class, 'logout'])
+;
