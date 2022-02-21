@@ -6,23 +6,17 @@
 
         <title>Test Tecnico Laravel</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            @import 'css/app.css';
-        </style>
-        <script src="js/app.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+        <script src="{{ asset('js/app.js') }}"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
             <div class="container-fluid">
-              <span class="navbar-brand" href="#">Laravel Test Tecnico</span>
+              <a class="navbar-brand" href="/">Laravel Test Tecnico</a>
                 <span class="navbar-text">
                   @if(isset($user))
                     Sei loggato come <span class="text-black text-bold">{{ $user->name }}</span>
-                    <a class="ms-4" href="logout">Logout</a>
+                    <a class="ms-4" href="/logout">Logout</a>
                   @endif
                 </span>
               </div>

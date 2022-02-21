@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\API\BeerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/getBeers', [BeerController::class, 'getBeers'])
+Route::get('getBeers/{page}', [BeerController::class, 'getBeers'])
     ->name('getBeers')
 ;

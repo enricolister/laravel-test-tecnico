@@ -6,10 +6,17 @@ use Illuminate\Support\Facades\Http;
 
 class Helper
 {
-    public static function performCurlGetRequest($url, $headers = null) {
-
+    public static function performCurlGetRequest($url, $headers = null)
+    {
+        $headers = $headers ?? [];
         $response = Http::withHeaders($headers)->get($url);
-        $statusCode = $response->status();
-        return json_decode($response->getBody(), true);
+
+        $body = isset($response['body']) ? $response['body'] : json_decode($response->getBody(), true);
+        $code = isset($response['code']) ? $response['code'] : $response->status();
+
+        return [
+            'body' => $body,
+            'code' => $code
+        ];
     }
 }

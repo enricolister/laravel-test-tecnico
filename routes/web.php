@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\API\BeerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 /*
@@ -19,6 +18,7 @@ use App\Http\Controllers\HomeController;
 // });
 
 Route::get('/', [HomeController::class, 'home'])
+    ->name('home')
     ->middleware('token.auth')
 ;
 
@@ -26,14 +26,14 @@ Route::post('/', [HomeController::class, 'home'])
     ->middleware('token.auth')
 ;
 
-Route::get('/callInternalBeers', [HomeController::class, 'callInternalBeers'])
+Route::get('callInternalBeers/{token}/{page?}', [HomeController::class, 'callInternalBeers'])
     ->name('callInternalBeers')
     ->middleware('token.auth')
 ;
 
-Route::get('/login', [HomeController::class, 'login'])
+Route::get('login', [HomeController::class, 'login'])
     ->name('login')
 ;
 
-Route::get('/logout', [HomeController::class, 'logout'])
+Route::get('logout', [HomeController::class, 'logout'])
 ;
