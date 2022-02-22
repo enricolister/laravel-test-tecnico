@@ -12,11 +12,11 @@ Nel database sarà salvato un solo utente con username "root" e password "passwo
 
 ## API
 
-# Url
+### Url
 
 api/getBeers/{numeroPagina}
 
-# Header
+### Header
 
 "Authorization": {token}
 
