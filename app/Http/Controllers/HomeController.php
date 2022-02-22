@@ -47,7 +47,7 @@ class HomeController extends Controller
             if ($responseArray['code'] !== 200) {
                 switch ($responseArray['code']) {
                     case 401:
-                        $errorString = 'Attenzione!Il token non è più valido, fare logout e accedere nuovamente per rigenerarlo';
+                        $errorString = 'Attenzione! Il token non è più valido, fare logout e accedere nuovamente per rigenerarlo';
                         break;
                     case 404:
                         $errorString = 'Attenzione! La risorsa di rete cercata non è stata trovata';
@@ -62,10 +62,14 @@ class HomeController extends Controller
                     '3' => $errorString
                 ]);
             }
-            dd($responseArray['body']);
+            $nextPage = $responseArray['page'] + 1;
+            $previousPage = $responseArray['page'] - 1;
             return view('list')
                 ->with('data', $responseArray['body'])
                 ->with('page', $responseArray['page'])
+                ->with('previousPage', $previousPage)
+                ->with('nextPage', $nextPage)
+                ->with('token', $token)
                 ->with('user', Auth::user());
         } catch (\Exception $e) {
             Log::error('#callInternalBeers: ' . $e->getMessage());
