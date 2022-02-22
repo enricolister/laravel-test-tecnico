@@ -15,7 +15,9 @@ Nel database sarà salvato un solo utente con username "root" e password "passwo
 1. Clonare il repository
 2. Creare un file .env locale basato su .env.example
 3. Creare un database locale per l'applicazione, di default dovrebbe chiamarsi "laravel_test_tecnico" con accesso username "root" e senza password
-4. Eseguire "composer install" nella cartella root del progetto.
+4. Eseguire "composer install" nella cartella root del progetto
+5. Eseguire le migration con "php artisan migrate" nella cartella del progetto.
+
 
 ## Note finali
 
